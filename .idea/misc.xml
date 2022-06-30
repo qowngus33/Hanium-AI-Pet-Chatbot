@@ -3,15 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-anydpi/ic_others.xml" value="0.13" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2538818359375" />
-        <entry key="app/src/main/res/layout/home_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.16077898550724637" />
+        <entry key="app/src/main/res/layout/content_setting.xml" value="0.16077898550724637" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.16077898550724637" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.16077898550724637" />
+        <entry key="app/src/main/res/layout/home_page.xml" value="0.18863983154296882" />
         <entry key="app/src/main/res/layout/item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/mymy.xml" value="0.25" />
         <entry key="app/src/main/res/layout/recyclerview_item.xml" value="0.12639311043566362" />
         <entry key="app/src/main/res/layout/sample_button_page.xml" value="0.16259057971014493" />
-        <entry key="app/src/main/res/menu/menu.xml" value="0.24074074074074073" />
+        <entry key="app/src/main/res/layout/setting_page.xml" value="0.16077898550724637" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.1" />
       </map>
     </option>
   </component>
