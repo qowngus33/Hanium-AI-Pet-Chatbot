@@ -129,11 +129,37 @@
         android:gravity="center"
         android:layout_gravity="left">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="36dp"
-            android:text="Drawer"
-            android:gravity="center" />
+        <Button
+            android:id="@+id/drawer_button1"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="홈"
+            />
+        <Button
+            android:id="@+id/drawer_button2"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="챗봇상담"
+            />
+        <Button
+            android:id="@+id/drawer_button3"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="챗봇상담"
+            />
+        <Button
+            android:id="@+id/drawer_button4"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="챗봇상담"
+            />
+        <Button
+            android:id="@+id/drawer_button5"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="챗봇상담"
+            />
+
+
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

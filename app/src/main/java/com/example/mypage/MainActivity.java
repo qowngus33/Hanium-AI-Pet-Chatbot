@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
-    boolean isDrawerOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
         drawerBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                isDrawerOpen = !isDrawerOpen;
-                if(isDrawerOpen) drawer.openDrawer(Gravity.LEFT);
+                if(!drawer.isDrawerOpen(Gravity.LEFT)) drawer.openDrawer(Gravity.LEFT);
                 else drawer. closeDrawer(Gravity.LEFT);
             }
         });
