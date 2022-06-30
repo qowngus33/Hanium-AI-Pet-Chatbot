@@ -5,8 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,31 +23,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.home_page);
 
-        //설정 목록 생성
-        ArrayList<String> listSet = new ArrayList<>();
-        listSet.add("내 프로필");
-        listSet.add("반려동물 프로필");
-        listSet.add("문진표 관리");
-
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
-        recyclerView.setLayoutManager(linearLayoutManager); //LayoutManger 설정
-
-        CustomAdapter customAdapter = new CustomAdapter(listSet);
-        //==========[Click 이벤트]=========
-        customAdapter.setOnItemClickListener(new CustomAdapter.OnItemclickListener() {
+        //개발자 정보 버튼 클릭시 액티비티 전환
+        Button questionnaireBtn = (Button) findViewById(R.id.button3);
+        Button chatbotBtn = (Button) findViewById(R.id.button5);
+        questionnaireBtn.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onItemclicked(int position, String data) {
-                Toast.makeText(getApplicationContext(), "Position" + position +", Data" + data, Toast.LENGTH_SHORT).show();
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), NewActivity.class);
+                startActivity(intent);
             }
         });
-        //====================================
+        chatbotBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), NewActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        recyclerView.setAdapter(customAdapter); //어댑터 설정
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
 }

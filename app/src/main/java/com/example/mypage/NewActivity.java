@@ -10,8 +10,6 @@ public class NewActivity extends MainActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item);
-
-        TextView tv = findViewById(R.id.tv);
+        setContentView(R.layout.sample_button_page);
     }
 }
