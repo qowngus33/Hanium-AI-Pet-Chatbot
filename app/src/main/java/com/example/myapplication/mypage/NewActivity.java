@@ -1,8 +1,9 @@
-package com.example.mypage;
+package com.example.myapplication.mypage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+
+import com.example.myapplication.R;
 
 public class NewActivity extends MainActivity{
     private Intent intent;

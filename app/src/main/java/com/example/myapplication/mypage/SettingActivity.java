@@ -1,8 +1,11 @@
-package com.example.mypage;
+package com.example.myapplication.mypage;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.R;
 
 
 public class SettingActivity extends AppCompatActivity {
