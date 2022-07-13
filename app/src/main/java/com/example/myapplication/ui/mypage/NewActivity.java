@@ -1,4 +1,4 @@
-package com.example.myapplication.mypage;
+package com.example.myapplication.ui.mypage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.example.myapplication.R;
 
 public class NewActivity extends MainActivity{
-    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

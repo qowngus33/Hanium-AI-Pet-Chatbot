@@ -1,4 +1,4 @@
-package com.example.myapplication.mypage;
+package com.example.myapplication.ui.mypage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
         Button questionnaireBtn = (Button) findViewById(R.id.home_button1);
         Button chatbotBtn = (Button) findViewById(R.id.home_button2);
         Button diseaseListBtn = (Button) findViewById(R.id.home_button3);
+        Button loginPage = (Button) findViewById(R.id.drawer_button_login);
         Button hospitalListBtn = (Button) findViewById(R.id.home_button4);
         ImageButton settingBtn = (ImageButton) findViewById(R.id.setting_btn);
         ImageButton drawerBtn = (ImageButton) findViewById(R.id.toolbar_btn);
+
 
         questionnaireBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -50,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), NewActivity.class);
+                startActivity(intent);
+            }
+        });
+        loginPage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });

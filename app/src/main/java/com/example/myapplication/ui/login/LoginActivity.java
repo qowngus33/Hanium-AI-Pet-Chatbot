@@ -24,11 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.mypage.MainActivity;
-import com.example.myapplication.mypage.NewActivity;
-import com.example.myapplication.mypage.SettingActivity;
-import com.example.myapplication.ui.login.LoginViewModel;
-import com.example.myapplication.ui.login.LoginViewModelFactory;
+import com.example.myapplication.ui.join.JoinActivity;
+import com.example.myapplication.ui.mypage.MainActivity;
 import com.example.myapplication.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -49,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
+        final Button signupButton = binding.signup;
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -104,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         };
+
         usernameEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -126,6 +125,13 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
 
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
                 startActivity(intent);
             }
         });

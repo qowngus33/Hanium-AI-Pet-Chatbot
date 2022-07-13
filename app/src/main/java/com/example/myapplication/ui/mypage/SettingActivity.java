@@ -1,4 +1,4 @@
-package com.example.myapplication.mypage;
+package com.example.myapplication.ui.mypage;
 
 import android.content.Intent;
 import android.os.Bundle;
