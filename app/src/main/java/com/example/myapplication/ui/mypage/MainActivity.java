@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.login.LoginActivity;
+import com.example.myapplication.ui.setting.SettingActivity;
 
 public class MainActivity extends AppCompatActivity {
 

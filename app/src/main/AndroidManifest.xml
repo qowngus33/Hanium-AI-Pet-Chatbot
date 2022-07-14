@@ -24,9 +24,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.mypage.MainActivity" />
-        <activity android:name=".ui.mypage.SettingActivity" />
+        <activity android:name=".ui.setting.SettingActivity" />
         <activity android:name=".ui.mypage.NewActivity" />
         <activity android:name=".ui.join.JoinActivity" />
+
+        <activity android:name=".ui.setting.PetProfileActivity" />
+        <activity android:name=".ui.setting.ProfileActivity" />
+        <activity android:name=".ui.setting.New" />
     </application>
 
 </manifest>
