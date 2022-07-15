@@ -33,7 +33,6 @@
 
         <activity android:name=".ui.setting.PetProfileActivity" />
         <activity android:name=".ui.setting.ProfileActivity" />
-        <activity android:name=".ui.setting.New" />
 
     </application>
 

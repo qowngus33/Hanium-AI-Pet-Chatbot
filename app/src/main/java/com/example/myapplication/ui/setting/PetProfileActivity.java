@@ -1,15 +1,23 @@
 package com.example.myapplication.ui.setting;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.myapplication.R;
+import com.example.myapplication.ui.pet_select.PetSelectActivity;
+
+import java.util.zip.Inflater;
 
 public class PetProfileActivity extends SettingActivity {
     private Intent intent;
@@ -60,28 +68,37 @@ public class PetProfileActivity extends SettingActivity {
         btnAge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder name = new AlertDialog.Builder(PetProfileActivity.this);
-                name.setTitle("나이 변경");
+                AlertDialog.Builder AgePicker = new AlertDialog.Builder(PetProfileActivity.this);
 
-                //스크롤뷰(?)로 나이 선택할 수 있게 변경하기.
-                final EditText NickName = new EditText(PetProfileActivity.this);
-                name.setView(NickName);
-                name.setPositiveButton("설정", new DialogInterface.OnClickListener() {
+                AgePicker.setTitle("나이변경");
+                final NumberPicker AP = new NumberPicker(PetProfileActivity.this);
+                AgePicker.setView(AP);
+
+                AP.setMinValue(0);
+                AP.setMaxValue(30);
+                AP.setWrapSelectorWheel(false);
+                AP.setValue(0);
+
+                AP.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        String result = NickName.getText().toString();
-                        petAge.setText(result);
-                        dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "나이가 변경되었습니다.", Toast.LENGTH_SHORT).show();
+                    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                     }
                 });
-                name.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+
+                AgePicker.setPositiveButton("설정", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        petAge.setText(String.valueOf(AP.getValue()));
+                        dialog.dismiss();
+                    }
+                });
+                AgePicker.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         dialog.dismiss();
                     }
                 });
-                name.show();
+                AgePicker.show();
             }
         });
 
@@ -98,7 +115,7 @@ public class PetProfileActivity extends SettingActivity {
             @Override
             public void onClick(View view) {
                 //정보 삭제 후, 반려동물 등록화면으로 이동
-                Intent intent = new Intent(getApplicationContext(), New.class);
+                Intent intent = new Intent(getApplicationContext(), PetSelectActivity.class);
                 startActivity(intent);
             }
         });
