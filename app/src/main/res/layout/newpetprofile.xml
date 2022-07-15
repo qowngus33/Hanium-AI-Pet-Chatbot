@@ -34,6 +34,7 @@
                 android:layout_marginLeft="70dp"
                 android:layout_marginRight="70dp" />
         </TableRow>
+
         <TableRow android:layout_marginTop="5dp">
             <TextView
                 android:text="나이:"
@@ -51,6 +52,7 @@
                 android:layout_marginRight="70dp" />
         </TableRow>
         <TableRow android:layout_marginTop="5dp">
+
             <TextView
                 android:text="성별:"
                 android:textSize="20dp"
@@ -121,6 +123,47 @@
                     />
             </com.google.android.material.button.MaterialButtonToggleGroup>
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_column="0"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="20dp" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/CatOrDogToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialTv"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <Button
+                    android:id="@+id/CatToggle"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="고양이"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/DogToggle"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="개"
+                    android:textSize="18dp" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </TableRow>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
