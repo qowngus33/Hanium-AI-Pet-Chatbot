@@ -27,6 +27,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.ui.join.JoinActivity;
 import com.example.myapplication.ui.mypage.MainActivity;
 import com.example.myapplication.databinding.ActivityLoginBinding;
+import com.example.myapplication.ui.pet_select.PetSelectActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = binding.password;
         final Button loginButton = binding.login;
         final Button signupButton = binding.signup;
+        final Button passwordForgetButton = binding.button;
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -124,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PetSelectActivity.class);
                 startActivity(intent);
             }
         });
@@ -135,12 +137,19 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        passwordForgetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PasswordChangeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_SHORT).show();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

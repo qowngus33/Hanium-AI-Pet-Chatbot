@@ -52,7 +52,7 @@
                android:layout_marginTop="309dp"
                android:layout_marginEnd="219dp"
                android:layout_marginBottom="151dp"
-               android:text="질병내역"
+               android:text="예측진단"
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +136,7 @@
             android:text="로그인 화면"
             />
         <Button
-            android:id="@+id/drawer_button2"
+            android:id="@+id/drawer_button_pet"
             android:layout_width="150dp"
             android:layout_height="75dp"
             android:text="펫 선택 화면"
