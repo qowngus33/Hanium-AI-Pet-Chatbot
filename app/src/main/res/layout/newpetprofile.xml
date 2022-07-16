@@ -6,53 +6,92 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_marginTop="20dp"
         android:id="@+id/pic"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="163dp"
+        android:layout_height="155dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:layout_marginTop="20dp"
+        android:src="@drawable/cat" />
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:stretchColumns="*">
+        <TableRow android:layout_marginTop="5dp">
+            <TextView
+                android:text=""
+                android:textSize="20dp"
+                android:layout_column="0"
+                android:layout_gravity="center"/>
 
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/DogOrCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/materialTv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                android:layout_gravity="center">
+
+                <Button
+                    android:id="@+id/selectDog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="개"
+                    android:textSize="18dp"
+                    style="?attr/materialButtonStyle"
+                    />
+                <Button
+                    android:id="@+id/selectCat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="고양이"
+                    android:textSize="18dp"
+                    style="?attr/materialButtonOutlinedStyle"
+                    />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </TableRow>
         <TableRow>
             <TextView
                 android:text="이름:"
                 android:textSize="20dp"
                 android:layout_column="0"
                 android:layout_gravity="center"/>
-
-            <EditText
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:layout_marginLeft="70dp"
-                android:layout_marginRight="70dp" />
+            <TextView
+                android:text=""
+                android:textSize="20dp"
+                android:id="@+id/petNickname"
+                android:layout_column="1"
+                android:layout_gravity="center"/>
+            <Button
+                android:text="입력"
+                android:textSize="20dp"
+                android:id="@+id/btnName"
+                android:layout_column="2"
+                android:layout_gravity="center"/>
         </TableRow>
-
         <TableRow android:layout_marginTop="5dp">
             <TextView
                 android:text="나이:"
                 android:textSize="20dp"
                 android:layout_column="0"
                 android:layout_gravity="center"/>
-
-            <EditText
-                android:id="@+id/editTextTextPersonName2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:layout_marginLeft="70dp"
-                android:layout_marginRight="70dp" />
+            <TextView
+                android:text=""
+                android:textSize="20dp"
+                android:id="@+id/petAge"
+                android:layout_column="1"
+                android:layout_gravity="center"/>
+            <Button
+                android:text="입력"
+                android:textSize="20dp"
+                android:id="@+id/btnAge"
+                android:layout_column="2"
+                android:layout_gravity="center"/>
         </TableRow>
         <TableRow android:layout_marginTop="5dp">
-
             <TextView
                 android:text="성별:"
                 android:textSize="20dp"
@@ -124,46 +163,6 @@
             </com.google.android.material.button.MaterialButtonToggleGroup>
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:layout_column="0"
-                android:layout_gravity="center"
-                android:text=""
-                android:textSize="20dp" />
-
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/CatOrDogToggle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialTv"
-                app:selectionRequired="true"
-                app:singleSelection="true">
-
-                <Button
-                    android:id="@+id/CatToggle"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="고양이"
-                    android:textSize="18dp" />
-
-                <Button
-                    android:id="@+id/DogToggle"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="개"
-                    android:textSize="18dp" />
-            </com.google.android.material.button.MaterialButtonToggleGroup>
-        </TableRow>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -172,8 +171,8 @@
             <Button
                 android:text="저장"
                 android:textSize="20dp"
-                android:id="@+id/btnSave"
-                android:layout_toLeftOf="@id/btnDelete"
+                android:id="@+id/btnAddPetSave"
+                android:layout_toLeftOf="@id/btnAddPetCancel"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="35dp"/>
@@ -181,7 +180,7 @@
             <Button
                 android:text="취소"
                 android:textSize="20dp"
-                android:id="@+id/btnDelete"
+                android:id="@+id/btnAddPetCancel"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"/>
