@@ -52,7 +52,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     // A placeholder username validation check
-    private boolean isUserNameValid(String username) {
+    public boolean isUserNameValid(String username) {
         if (username == null) {
             return false;
         }
@@ -64,7 +64,15 @@ public class LoginViewModel extends ViewModel {
     }
 
     // A placeholder password validation check
-    private boolean isPasswordValid(String password) {
-        return password != null && password.trim().length() > 5;
+    public boolean isPasswordValid(String password) {
+        return password != null && password.trim().length() > 5 && isAlphaOrDigit(password);
+    }
+
+    private boolean isAlphaOrDigit(String password) {
+        for(int i=0;i<password.length();i++) {
+            if (!Character.isLetterOrDigit(password.charAt(i)))
+                return false;
+        }
+        return true;
     }
 }
