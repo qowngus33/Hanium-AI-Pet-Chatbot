@@ -1,19 +1,16 @@
 package com.example.myapplication.ui.pet_select;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.mypage.MainActivity;
 
 import java.util.ArrayList;
 
@@ -85,7 +82,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         if(item.getImgName()=="cat") // 아이템의 이미지 이름이 cat이면 고양이 사진으로 설정
             holder.imgView_item.setImageResource(R.drawable.cat);
         else
-            holder.imgView_item.setImageResource(R.drawable.img);
+            holder.imgView_item.setImageResource(R.drawable.dog);
 
         holder.txt_main.setText(item.getMainText());
         holder.txt_sub.setText(item.getSubText());

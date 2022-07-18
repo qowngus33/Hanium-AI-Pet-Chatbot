@@ -3,27 +3,19 @@ package com.example.myapplication.ui.pet_select;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.mypage.MainActivity;
-import com.example.myapplication.ui.mypage.NewActivity;
-import com.example.myapplication.ui.setting.PetProfileActivity;
-
-import java.util.ArrayList;
 
 public class AddPetActivity extends AppCompatActivity {
 
@@ -134,7 +126,7 @@ public class AddPetActivity extends AppCompatActivity {
         selectDogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                petprofile.setImageResource(R.drawable.img);
+                petprofile.setImageResource(R.drawable.dog);
             }
         });
     }
