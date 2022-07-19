@@ -10,6 +10,8 @@ import com.example.myapplication.data.LoginRepository;
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
+ * LoginViewModel을 인스턴스화하기 위한 ViewModel 제공자 팩토리.
+ * LoginViewModel에 비어 있지 않은 생성자가 있는 경우 필수
  */
 public class LoginViewModelFactory implements ViewModelProvider.Factory {
 
