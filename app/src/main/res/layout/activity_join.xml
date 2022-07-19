@@ -57,7 +57,7 @@
                 android:minHeight="48dp" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/emailCheckButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
