@@ -51,10 +51,10 @@ public class LoginViewModel extends ViewModel {
         //userName 유효하지 않을 때
         if (!isUserNameValid(username)) {
             loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
-            //pw 유효하지 않을 때
+        //pw 유효하지 않을 때
         } else if (!isPasswordValid(password)) {
             loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));
-            //둘 다 유효할 때
+        //둘 다 유효할 때
         } else {
             loginFormState.setValue(new LoginFormState(true));
         }

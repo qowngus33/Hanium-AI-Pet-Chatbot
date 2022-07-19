@@ -1,14 +1,11 @@
 package com.example.myapplication.ui.setting;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.text.Editable;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -16,8 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.pet_select.PetSelectActivity;
-
-import java.util.zip.Inflater;
 
 public class PetProfileActivity extends SettingActivity {
     private Intent intent;
@@ -40,18 +35,22 @@ public class PetProfileActivity extends SettingActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder name = new AlertDialog.Builder(PetProfileActivity.this);
-                name.setTitle("닉네임 설정");
-                name.setMessage("10자 이내로 닉네임을 설정하세요.");
+                name.setTitle("이름 설정");
+                name.setMessage("10자 이내로 이름을 설정하세요.");
 
                 final EditText NickName = new EditText(PetProfileActivity.this);
                 name.setView(NickName);
                 name.setPositiveButton("저장", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-                        String result = NickName.getText().toString();
-                        petNickName.setText(result);
-                        dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "닉네임이 변경되었습니다.", Toast.LENGTH_SHORT).show();
+                        Editable result = NickName.getText();
+                        if (result.length()<10) {
+                            petNickName.setText(result.toString());
+                            dialog.dismiss();
+                            Toast.makeText(getApplicationContext(), "이름이 변경되었습니다.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "10자 이내로 입력하세요.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 name.setNegativeButton("취소", new DialogInterface.OnClickListener() {

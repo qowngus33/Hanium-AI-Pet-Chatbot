@@ -24,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.join.JoinActivity;
+import com.example.myapplication.ui.mypage.MainActivity;
 import com.example.myapplication.ui.mypage.MainActivity;
 import com.example.myapplication.databinding.ActivityLoginBinding;
 import com.example.myapplication.ui.pet_select.PetSelectActivity;
