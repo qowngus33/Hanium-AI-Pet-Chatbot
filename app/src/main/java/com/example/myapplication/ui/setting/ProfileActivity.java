@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.login.LoginActivity;
-import com.example.myapplication.ui.login.PasswordChangeActivity;
+import com.example.myapplication.ui.newlogin.LoginActivity;
+import com.example.myapplication.ui.newlogin.PasswordChangeActivity;
 
 public class ProfileActivity extends SettingActivity {
     private Intent intent;
