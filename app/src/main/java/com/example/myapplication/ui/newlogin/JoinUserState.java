@@ -3,9 +3,9 @@ package com.example.myapplication.ui.newlogin;
 import com.example.myapplication.R;
 
 public class JoinUserState {
-    private String email;
-    private String password;
-    private String rePassword;
+    private String email = null;
+    private String password = null;
+    private String rePassword = null;
 
     public boolean isEmailValid() {
         if (email == null || !email.contains("@")) {
@@ -21,6 +21,8 @@ public class JoinUserState {
     }
 
     public boolean isPasswordSame(){
+        if(password == null || rePassword == null)
+            return false;
         return password.equals(rePassword);
     }
 

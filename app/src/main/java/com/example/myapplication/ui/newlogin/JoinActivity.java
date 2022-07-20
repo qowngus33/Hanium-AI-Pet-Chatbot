@@ -111,12 +111,12 @@ public class JoinActivity extends AppCompatActivity {
                 // task.execute("http://" + IP_ADDRESS + "/insert.php", ID, Password, Email, Phone, Sort);
                 if(joinUserState.isValidData()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(JoinActivity.this);
-                    dialog = builder.setMessage("축하합니다.회원가입에 성공하셨습니다!")
+                    dialog = builder.setMessage("본인 확인 페이지로 이동합니다.")
                             .setCancelable(false)
                             .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
+                                    Intent intent = new Intent(JoinActivity.this, JoinEmailCheckActivity.class);
                                     startActivity(intent);
                                 }
                             })
