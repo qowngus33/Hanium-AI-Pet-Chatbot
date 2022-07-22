@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+//회원가입 정보 서버 가져오기
 public class RegisterRequest extends StringRequest {
 
     //서버 URL 설정(php 파일 연동)

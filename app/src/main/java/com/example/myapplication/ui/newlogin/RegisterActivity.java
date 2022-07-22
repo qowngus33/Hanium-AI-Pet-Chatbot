@@ -18,6 +18,7 @@ import com.example.myapplication.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+//회원가입 창
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText join_email, join_password, join_name, join_pwck;
@@ -81,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 };
+                //이메일 중복, 유효성 검사
                 ValidateRequest validateRequest = new ValidateRequest(UserEmail, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(validateRequest);

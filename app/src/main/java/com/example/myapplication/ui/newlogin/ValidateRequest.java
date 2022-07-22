@@ -8,6 +8,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+//이메일 유효성 검사
 public class ValidateRequest extends StringRequest {
     //서버 url 설정(php파일 연동)
     final static  private String URL="http://dodam123.dothome.co.kr/UserValidate.php";
