@@ -49,4 +49,9 @@ public class JoinUserState {
     public void setRePassword(String rePassword) {
         this.rePassword = rePassword;
     }
+
+    public String getEmail() { return email; }
+
+    public String getPassword() { return password; }
+
 }
