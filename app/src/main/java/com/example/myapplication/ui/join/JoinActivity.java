@@ -34,6 +34,7 @@ public class JoinActivity extends AppCompatActivity {
     private JoinUserState joinUserState = new JoinUserState();
     private AlertDialog dialog;
     private boolean validate = true;
+    private boolean isJoinSuccess = false;
     private ServiceAPI service = RetrofitClient.getClient().create(ServiceAPI.class);
 
     @Override
@@ -95,14 +96,12 @@ public class JoinActivity extends AppCompatActivity {
         emailCheckButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String UserEmail = emailEditText.getText().toString();
                 if (!joinUserState.isEmailValid()) {
                     emailEditText.setError("이메일 형식이 잘못되었습니다.");
                     return;
+                } else {
+                    validateEmail(new EmailValidationData(joinUserState.getEmail()));
                 }
-
-                validateEmail(new EmailValidationData(joinUserState.getEmail()));
-
             }
         });
 
@@ -111,10 +110,7 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (joinUserState.isValidData() && validate) {
-                    // TODO : 서버로 회원가입 요청
                     startJoin(new JoinData(joinUserState.getEmail(),joinUserState.getPassword()));
-                    Intent intent = new Intent(getApplicationContext(), JoinEmailCheckActivity.class);
-                    startActivity(intent);
                 } else if(!validate) {
                     Toast.makeText(getApplicationContext(), "이메일 인증을 완료해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
@@ -129,9 +125,8 @@ public class JoinActivity extends AppCompatActivity {
             public void onResponse(Call<JoinResponse> call, Response<JoinResponse> response) {
                 JoinResponse result = response.body();
                 Toast.makeText(JoinActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-
                 if (result.getCode() == 200) {
-                    finish();
+                    // finish();
                 }
             }
             @Override
@@ -149,9 +144,9 @@ public class JoinActivity extends AppCompatActivity {
             public void onResponse(Call<JoinResponse> call, Response<JoinResponse> response) {
                 JoinResponse result = response.body();
                 Toast.makeText(JoinActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-
                 if (result.getCode() == 200) {
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), JoinEmailCheckActivity.class);
+                    startActivity(intent);
                 }
             }
             @Override

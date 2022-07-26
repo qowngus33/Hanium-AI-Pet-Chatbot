@@ -16,67 +16,75 @@
            android:layout_width="match_parent"
            android:layout_height="match_parent">
 
-           <Button
-               android:id="@+id/home_button1"
-               android:layout_width="150dp"
-               android:layout_height="143dp"
-               android:layout_marginStart="42dp"
-               android:layout_marginTop="146dp"
-               android:layout_marginEnd="219dp"
-               android:layout_marginBottom="314dp"
-               android:text="문진표"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+           <ScrollView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginTop="70dp">
 
-           <Button
-               android:id="@+id/home_button2"
-               android:layout_width="150dp"
-               android:layout_height="143dp"
-               android:layout_marginStart="214dp"
-               android:layout_marginTop="146dp"
-               android:layout_marginEnd="47dp"
-               android:layout_marginBottom="314dp"
-               android:text="챗봇상담"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"
+                   android:orientation="vertical">
 
-           <Button
-               android:id="@+id/home_button3"
-               android:layout_width="150dp"
-               android:layout_height="143dp"
-               android:layout_marginStart="42dp"
-               android:layout_marginTop="309dp"
-               android:layout_marginEnd="219dp"
-               android:layout_marginBottom="151dp"
-               android:text="예측진단"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+                   <TextView
+                       android:id="@+id/textView4"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:gravity="center"
+                       android:text="멍냥챗봇"
+                       android:textAlignment="center"
+                       android:layout_marginTop="20dp"
+                       android:layout_marginBottom="20dp"
+                       android:textSize="30dp" />
 
-           <Button
-               android:id="@+id/home_button4"
-               android:layout_width="150dp"
-               android:layout_height="143dp"
-               android:layout_marginStart="214dp"
-               android:layout_marginTop="309dp"
-               android:layout_marginEnd="47dp"
-               android:layout_marginBottom="151dp"
-               android:text="연계병원"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+                   <Button
+                       android:id="@+id/home_button1"
+                       android:layout_width="350dp"
+                       android:layout_height="100dp"
+                       android:layout_margin="10dp"
+                       android:gravity="center"
+                       android:text="챗봇상담" />
+
+                   <Button
+                       android:id="@+id/home_button2"
+                       android:layout_width="350dp"
+                       android:layout_height="100dp"
+                       android:layout_margin="10dp"
+                       android:gravity="center"
+                       android:text="문진표" />
+
+                   <Button
+                       android:id="@+id/home_button3"
+                       android:layout_width="350dp"
+                       android:layout_height="100dp"
+                       android:layout_margin="10dp"
+                       android:gravity="center"
+                       android:text="예측진단" />
+
+                   <Button
+                       android:id="@+id/home_button4"
+                       android:layout_width="350dp"
+                       android:layout_height="100dp"
+                       android:layout_margin="10dp"
+                       android:gravity="center"
+                       android:text="연계병원" />
+
+                   <Button
+                       android:id="@+id/home_button5"
+                       android:layout_width="350dp"
+                       android:layout_height="100dp"
+                       android:layout_margin="10dp"
+                       android:gravity="center"
+                       android:text="질병백과" />
+               </LinearLayout>
+           </ScrollView>
 
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="match_parent"
-               tools:layout_editor_absoluteX="18dp"
-               tools:layout_editor_absoluteY="6dp">
+               tools:layout_editor_absoluteX="0dp"
+               tools:layout_editor_absoluteY="-41dp">
 
                <androidx.appcompat.widget.Toolbar
                    android:id="@+id/toolbar"
