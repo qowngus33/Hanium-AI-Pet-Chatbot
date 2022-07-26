@@ -1,8 +1,7 @@
-package com.example.myapplication.ui.newlogin;
-
-import com.example.myapplication.R;
+package com.example.myapplication.ui.join;
 
 public class JoinUserState {
+
     private String email = null;
     private String password = null;
     private String rePassword = null;
@@ -15,7 +14,6 @@ public class JoinUserState {
         }
     }
 
-    // A placeholder password validation check
     public boolean isPasswordValid() {
         return password != null && password.trim().length() > 5 && isAlphaOrDigit(password);
     }

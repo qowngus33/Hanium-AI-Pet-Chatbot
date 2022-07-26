@@ -14,8 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.ActivityLoginBinding;
-import com.example.myapplication.ui.mypage.MainActivity;
+import com.example.myapplication.ui.join.JoinUserState;
 
 public class PasswordChangeActivity extends AppCompatActivity {
 

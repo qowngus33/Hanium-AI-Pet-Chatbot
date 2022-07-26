@@ -10,20 +10,14 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
 import com.example.myapplication.R;
-import com.example.myapplication.ui.mypage.MainActivity;
-import com.example.myapplication.ui.newlogin.JoinActivity;
+import com.example.myapplication.ui.join.JoinActivity;
+import com.example.myapplication.ui.pet_select.PetSelectActivity;
 //import com.example.myapplication.ui.newlogin.RegisterActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -105,7 +99,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         login_button = findViewById( R.id.login );
         login_button.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -114,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                 String UserPwd = login_password.getText().toString();
 
                 //임시로 화면 연결되게 해놓음.
-                Intent intent = new Intent( LoginActivity.this, MainActivity.class );
+                Intent intent = new Intent( LoginActivity.this, PetSelectActivity.class );
                 startActivity( intent );
 
 

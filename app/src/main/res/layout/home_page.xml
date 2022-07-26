@@ -133,13 +133,37 @@
             android:id="@+id/drawer_button_login"
             android:layout_width="150dp"
             android:layout_height="75dp"
-            android:text="로그인 화면"
+            android:text="로그아웃"
             />
         <Button
             android:id="@+id/drawer_button_pet"
             android:layout_width="150dp"
             android:layout_height="75dp"
-            android:text="펫 선택 화면"
+            android:text="펫 선택"
+            />
+        <Button
+            android:id="@+id/drawer_button_chatbot"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="챗봇 상담"
+            />
+        <Button
+            android:id="@+id/drawer_button_question"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="문진표"
+            />
+        <Button
+            android:id="@+id/drawer_button_diagnose"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="에측 진단"
+            />
+        <Button
+            android:id="@+id/drawer_button_hospital"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:text="연계병원"
             />
 
     </LinearLayout>

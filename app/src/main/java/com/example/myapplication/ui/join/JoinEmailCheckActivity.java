@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.newlogin;
+package com.example.myapplication.ui.join;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.mypage.MainActivity;
+import com.example.myapplication.ui.pet_select.PetSelectActivity;
 
 public class JoinEmailCheckActivity extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class JoinEmailCheckActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(JoinEmailCheckActivity.this, MainActivity.class);
+                                Intent intent = new Intent(JoinEmailCheckActivity.this, PetSelectActivity.class);
                                 startActivity(intent);
                             }
                         })
