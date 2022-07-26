@@ -6,6 +6,6 @@ import retrofit2.http.POST;
 
 interface LoginAPI {
     //@통신 방식("통신 API명")
-    @POST("/list")
+    @POST("/login")
     Call<LoginResponse> getLoginResponse(@Body LoginRequest loginRequest);
 }

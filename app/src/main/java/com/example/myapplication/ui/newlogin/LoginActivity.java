@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.JoinActivity;
+import com.example.myapplication.ui.join.RetrofitClient;
+import com.example.myapplication.ui.join.ServiceAPI;
 import com.example.myapplication.ui.pet_select.PetSelectActivity;
 
 import retrofit2.Call;
@@ -28,7 +30,7 @@ import retrofit2.Retrofit;
 public class LoginActivity extends AppCompatActivity {
 
     private Retrofit retrofitClient_login;
-    private LoginAPI LoginAPI;
+    private LoginAPI loginAPI = RetrofitClient.getClient().create(LoginAPI.class);
 
     private EditText login_email, login_password;
     private Button login_button, join_button, pw_change;
@@ -130,20 +132,22 @@ public class LoginActivity extends AppCompatActivity {
 
 
         //loginRequest에 저장된 데이터와 함께 LoginAPI에서 정의한 getLoginResponse 함수를 실행한 후 응답을 받음
-        LoginAPI.getLoginResponse(loginRequest).enqueue(new Callback<LoginResponse>() {
+        loginAPI.getLoginResponse(loginRequest).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 //response.body()를 result에 저장
                 LoginResponse result = response.body();
+                Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
 
-                    //받은 코드 저장
-                    String stautsCode = result.getStatusCode();
+
+                //받은 코드 저장
+                    int statusCode = result.getStatusCode();
 
                     String success = "200"; //로그인 성공
                     String errorId = "300"; //아이디 일치x
                     String errorPw = "400"; //비밀번호 일치x
 
-                    if (result.getStatusCode()=="200") {
+                    if (result.getStatusCode()==200) {
                         String userID = login_email.getText().toString();
 
                         Toast.makeText(LoginActivity.this, userID + "님 환영합니다.", Toast.LENGTH_LONG).show();
@@ -152,25 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         LoginActivity.this.finish();
 
-                    } /*else if (stautsCode.equals(errorId)) {
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                        builder.setTitle("알림")
-                                .setMessage("아이디가 존재하지 않습니다.")
-                                .setPositiveButton("확인", null)
-                                .create()
-                                .show();
-                        AlertDialog alertDialog = builder.create();
-                        alertDialog.show();
-
-                    } else if (stautsCode.equals(errorPw)) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                        builder.setTitle("알림")
-                                .setMessage("비밀번호가 일치하지 않습니다.")
-                                .setPositiveButton("확인", null)
-                                .create()
-                                .show();
-                    }*/ else {
+                    }  else {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                         builder.setTitle("알림")
@@ -181,7 +167,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 }
-
 
             //통신 실패
             @Override
