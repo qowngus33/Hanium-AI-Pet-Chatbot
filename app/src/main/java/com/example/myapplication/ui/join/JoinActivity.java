@@ -1,14 +1,8 @@
 package com.example.myapplication.ui.join;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,13 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.R;
-import com.example.myapplication.ui.newlogin.LoginActivity;
-import com.example.myapplication.ui.newlogin.RegisterRequest;
-import com.example.myapplication.ui.newlogin.ValidateRequest;
+import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.myapplication.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;

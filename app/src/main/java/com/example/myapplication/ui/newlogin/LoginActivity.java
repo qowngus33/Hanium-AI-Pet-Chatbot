@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.newlogin;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,16 +11,24 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.JoinActivity;
 import com.example.myapplication.ui.pet_select.PetSelectActivity;
-//import com.example.myapplication.ui.newlogin.RegisterActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 public class LoginActivity extends AppCompatActivity {
+
+    private Retrofit retrofitClient_login;
+    private LoginAPI LoginAPI;
 
     private EditText login_email, login_password;
     private Button login_button, join_button, pw_change;
@@ -103,49 +112,87 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String UserEmail = login_email.getText().toString();
-                String UserPwd = login_password.getText().toString();
 
-                //임시로 화면 연결되게 해놓음.
-                Intent intent = new Intent( LoginActivity.this, PetSelectActivity.class );
-                startActivity( intent );
+                LoginResponse();
+            }
+        });
+    }
+    public void LoginResponse() {
+        String userID = login_email.getText().toString().trim();
+        String userPassword = login_password.getText().toString().trim();
+
+        //loginRequest에 사용자가 입력한 id와 pw를 저장
+        LoginRequest loginRequest = new LoginRequest(userID, userPassword);
+
+        //retrofit 생성
+        retrofitClient_login = RetrofitClient_login.getInstance();
+        LoginAPI = RetrofitClient_login.getRetrofitInterface();
 
 
-                /*서버 연결 후, 성공여부 확인해야하는 부분!
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject( response );
-                            boolean success = jsonObject.getBoolean( "success" );
+        //loginRequest에 저장된 데이터와 함께 LoginAPI에서 정의한 getLoginResponse 함수를 실행한 후 응답을 받음
+        LoginAPI.getLoginResponse(loginRequest).enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                //response.body()를 result에 저장
+                LoginResponse result = response.body();
 
-                            if(success) {//로그인 성공시
+                    //받은 코드 저장
+                    String stautsCode = result.getStatusCode();
 
-                                String UserEmail = jsonObject.getString( "UserEmail" );
-                                String UserPwd = jsonObject.getString( "UserPwd" );
+                    String success = "200"; //로그인 성공
+                    String errorId = "300"; //아이디 일치x
+                    String errorPw = "400"; //비밀번호 일치x
 
-                                Toast.makeText( getApplicationContext(), "환영합니다.", Toast.LENGTH_SHORT ).show();
-                                Intent intent = new Intent( LoginActivity.this, MainActivity.class );
 
-                                intent.putExtra( "UserEmail", UserEmail );
-                                intent.putExtra( "UserPwd", UserPwd );
+                    if (result.getStatusCode() == "200") {
+                        String userID = login_email.getText().toString();
 
-                                startActivity( intent );
+                        Toast.makeText(LoginActivity.this, userID + "님 환영합니다.", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, PetSelectActivity.class);
+                        intent.putExtra("userId", userID);
+                        startActivity(intent);
+                        LoginActivity.this.finish();
 
-                            } else {//로그인 실패시
-                                Toast.makeText( getApplicationContext(), "로그인에 실패하셨습니다.", Toast.LENGTH_SHORT ).show();
-                                return;
-                            }
+                    } /*else if (stautsCode.equals(errorId)) {
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setTitle("알림")
+                                .setMessage("아이디가 존재하지 않습니다.")
+                                .setPositiveButton("확인", null)
+                                .create()
+                                .show();
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+
+                    } else if (stautsCode.equals(errorPw)) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setTitle("알림")
+                                .setMessage("비밀번호가 일치하지 않습니다.")
+                                .setPositiveButton("확인", null)
+                                .create()
+                                .show();
+                    }*/ else {
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setTitle("알림")
+                                .setMessage("아이디 혹은 비밀번호 오류입니다.")
+                                .setPositiveButton("확인", null)
+                                .create()
+                                .show();
+
                     }
-                };
-                LoginRequest loginRequest = new LoginRequest( UserEmail, UserPwd, responseListener );
-                RequestQueue queue = Volley.newRequestQueue( LoginActivity.this );
-                queue.add( loginRequest );*/
+                }
 
+
+            //통신 실패
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setTitle("알림")
+                        .setMessage("예기치 못한 오류가 발생하였습니다.")
+                        .setPositiveButton("확인", null)
+                        .create()
+                        .show();
             }
         });
     }
