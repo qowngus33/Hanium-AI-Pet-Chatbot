@@ -124,9 +124,9 @@ public class LoginActivity extends AppCompatActivity {
         //loginRequest에 사용자가 입력한 id와 pw를 저장
         LoginRequest loginRequest = new LoginRequest(userID, userPassword);
 
-        //retrofit 생성
+        /*retrofit 생성
         retrofitClient_login = RetrofitClient_login.getInstance();
-        LoginAPI = RetrofitClient_login.getRetrofitInterface();
+        LoginAPI = RetrofitClient_login.getRetrofitInterface();*/
 
 
         //loginRequest에 저장된 데이터와 함께 LoginAPI에서 정의한 getLoginResponse 함수를 실행한 후 응답을 받음
@@ -143,8 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                     String errorId = "300"; //아이디 일치x
                     String errorPw = "400"; //비밀번호 일치x
 
-
-                    if (result.getStatusCode() == "200") {
+                    if (result.getStatusCode()=="200") {
                         String userID = login_email.getText().toString();
 
                         Toast.makeText(LoginActivity.this, userID + "님 환영합니다.", Toast.LENGTH_LONG).show();
