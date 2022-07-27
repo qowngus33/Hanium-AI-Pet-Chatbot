@@ -10,9 +10,7 @@ public class LoginResponse {
     @SerializedName("responseMessage")
     private String message;
 
-    public int getStatusCode() {
-        return statusCode;
-    }
+    public int getStatusCode() { return statusCode; }
 
     public String getMessage() {
         return message;
