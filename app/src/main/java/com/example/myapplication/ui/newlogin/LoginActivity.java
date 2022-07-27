@@ -29,7 +29,6 @@ import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Retrofit retrofitClient_login;
     private LoginAPI loginAPI = RetrofitClient.getClient().create(LoginAPI.class);
 
     private EditText login_email, login_password;
@@ -141,32 +140,31 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 //받은 코드 저장
-                    int statusCode = result.getStatusCode();
+                int statusCode = result.getStatusCode();
 
-                    String success = "200"; //로그인 성공
-                    String errorId = "300"; //아이디 일치x
-                    String errorPw = "400"; //비밀번호 일치x
+                int success = 200; //로그인 성공
+                int errorId = 300; //아이디 일치x
+                int errorPw = 400; //비밀번호 일치x
 
-                    if (result.getStatusCode()==200) {
-                        String userID = login_email.getText().toString();
+                if (result.getStatusCode()==200) {
+                    String userID = login_email.getText().toString();
 
-                        Toast.makeText(LoginActivity.this, userID + "님 환영합니다.", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(LoginActivity.this, PetSelectActivity.class);
-                        intent.putExtra("userId", userID);
-                        startActivity(intent);
-                        LoginActivity.this.finish();
+                    Toast.makeText(LoginActivity.this, userID + "님 환영합니다.", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(LoginActivity.this, PetSelectActivity.class);
+                    intent.putExtra("userId", userID);
+                    startActivity(intent);
+                    LoginActivity.this.finish();
 
-                    }  else {
+                }  else {
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                        builder.setTitle("알림")
-                                .setMessage("아이디 혹은 비밀번호 오류입니다.")
-                                .setPositiveButton("확인", null)
-                                .create()
-                                .show();
-
-                    }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setTitle("알림")
+                            .setMessage("아이디 혹은 비밀번호 오류입니다.")
+                            .setPositiveButton("확인", null)
+                            .create()
+                            .show();
                 }
+            }
 
             //통신 실패
             @Override

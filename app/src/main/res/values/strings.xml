@@ -22,4 +22,6 @@
     <string name="reenter_password">Reenter password</string>
     <string name="password">password</string>
     <string name="jointextview">회원가입</string>
+    <string name="drawer_button">drawer_button</string>
+    <string name="setting_button">setting</string>
 </resources>

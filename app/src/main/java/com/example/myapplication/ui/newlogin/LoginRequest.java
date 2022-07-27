@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 //로그인 이메일, pw 정보 요청
 public class LoginRequest {
-
     @SerializedName("memberEmail")
     public String inputId;
 

@@ -9,7 +9,6 @@ class LoginFormState {
     private String email;
     private String password;
 
-
     //로그인 폼 상태가 유효한가
     public boolean isEmailValid() {
         if (email == null || !email.contains("@")) {

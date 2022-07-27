@@ -7,8 +7,7 @@ public class RetrofitClient {
     private final static String BASE_URL = "https://7919ceb2-3999-4ed8-8bcc-16baaf4e62d4.mock.pstmn.io";
     private static Retrofit retrofit = null;
 
-    private RetrofitClient() {
-    }
+    private RetrofitClient() { }
 
     public static Retrofit getClient() {
         if (retrofit == null) {
@@ -17,7 +16,6 @@ public class RetrofitClient {
                     .addConverterFactory(GsonConverterFactory.create()) // JSON 파싱을 위한 GsonConverterFactory를 추가한다.
                     .build();
         }
-
         return retrofit;
     }
 }

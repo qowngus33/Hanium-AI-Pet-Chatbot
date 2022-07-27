@@ -16,69 +16,54 @@
            android:layout_width="match_parent"
            android:layout_height="match_parent">
 
-           <ScrollView
+           <LinearLayout
                android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:layout_marginTop="70dp">
+               android:layout_height="wrap_content"
+               android:layout_marginTop="69dp"
+               android:gravity="center"
+               android:orientation="vertical"
+               app:layout_constraintTop_toTopOf="parent">
 
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
+               <Button
+                   android:id="@+id/home_button1"
+                   android:layout_width="350dp"
+                   android:layout_height="100dp"
+                   android:layout_margin="6dp"
                    android:gravity="center"
-                   android:orientation="vertical">
+                   android:text="챗봇상담" />
 
-                   <TextView
-                       android:id="@+id/textView4"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:gravity="center"
-                       android:text="멍냥챗봇"
-                       android:textAlignment="center"
-                       android:layout_marginTop="20dp"
-                       android:layout_marginBottom="20dp"
-                       android:textSize="30dp" />
+               <Button
+                   android:id="@+id/home_button2"
+                   android:layout_width="350dp"
+                   android:layout_height="100dp"
+                   android:layout_margin="6dp"
+                   android:gravity="center"
+                   android:text="문진표" />
 
-                   <Button
-                       android:id="@+id/home_button1"
-                       android:layout_width="350dp"
-                       android:layout_height="100dp"
-                       android:layout_margin="10dp"
-                       android:gravity="center"
-                       android:text="챗봇상담" />
+               <Button
+                   android:id="@+id/home_button3"
+                   android:layout_width="350dp"
+                   android:layout_height="100dp"
+                   android:layout_margin="6dp"
+                   android:gravity="center"
+                   android:text="예측진단" />
 
-                   <Button
-                       android:id="@+id/home_button2"
-                       android:layout_width="350dp"
-                       android:layout_height="100dp"
-                       android:layout_margin="10dp"
-                       android:gravity="center"
-                       android:text="문진표" />
+               <Button
+                   android:id="@+id/home_button4"
+                   android:layout_width="350dp"
+                   android:layout_height="100dp"
+                   android:layout_margin="6dp"
+                   android:gravity="center"
+                   android:text="연계병원" />
 
-                   <Button
-                       android:id="@+id/home_button3"
-                       android:layout_width="350dp"
-                       android:layout_height="100dp"
-                       android:layout_margin="10dp"
-                       android:gravity="center"
-                       android:text="예측진단" />
-
-                   <Button
-                       android:id="@+id/home_button4"
-                       android:layout_width="350dp"
-                       android:layout_height="100dp"
-                       android:layout_margin="10dp"
-                       android:gravity="center"
-                       android:text="연계병원" />
-
-                   <Button
-                       android:id="@+id/home_button5"
-                       android:layout_width="350dp"
-                       android:layout_height="100dp"
-                       android:layout_margin="10dp"
-                       android:gravity="center"
-                       android:text="질병백과" />
-               </LinearLayout>
-           </ScrollView>
+               <Button
+                   android:id="@+id/home_button5"
+                   android:layout_width="350dp"
+                   android:layout_height="100dp"
+                   android:layout_margin="6dp"
+                   android:gravity="center"
+                   android:text="질병백과" />
+           </LinearLayout>
 
            <LinearLayout
                android:layout_width="match_parent"
@@ -100,6 +85,7 @@
                        android:layout_height="wrap_content"
                        android:layout_margin="16dp"
                        android:background="#EEEEEE"
+                       android:contentDescription="@string/drawer_button"
                        android:minWidth="48dp"
                        android:minHeight="48dp"
                        android:src="@drawable/ic_other" />
@@ -117,6 +103,7 @@
                        android:layout_height="wrap_content"
                        android:layout_gravity="right"
                        android:background="#EEEEEE"
+                       android:contentDescription="@string/setting_button"
                        android:minWidth="48dp"
                        android:minHeight="48dp"
                        android:src="@drawable/ic_option" />
@@ -132,7 +119,7 @@
     <LinearLayout
         android:id="@+id/drawer_menu"
         android:layout_width="300dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_gravity="left">

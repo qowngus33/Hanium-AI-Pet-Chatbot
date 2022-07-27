@@ -8,4 +8,7 @@ interface LoginAPI {
     //@통신 방식("통신 API명")
     @POST("/login")
     Call<LoginResponse> getLoginResponse(@Body LoginRequest loginRequest);
+
+    @POST("/enterEmailCode/changePw")
+    Call<LoginResponse> getPasswordChangeResponse(@Body PasswordChangeRequest passwordChangeRequest);
 }
