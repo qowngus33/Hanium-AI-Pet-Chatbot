@@ -8,11 +8,18 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.join.RetrofitClient;
 import com.example.myapplication.ui.newlogin.LoginActivity;
 import com.example.myapplication.ui.newlogin.PasswordChangeActivity;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ProfileActivity extends SettingActivity {
     private Intent intent;
+
+    private ProfileAPI profileAPI = RetrofitClient.getClient().create(ProfileAPI.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +61,7 @@ public class ProfileActivity extends SettingActivity {
                 name.setPositiveButton("탈퇴", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-                        dialog.dismiss();
-                        //회원정보 삭제 후, 초기 로그인 화면으로 돌아가기
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intent);
+                        ProfileDelete();
                     }
                 });
                 name.setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -67,6 +71,31 @@ public class ProfileActivity extends SettingActivity {
                     }
                 });
                 name.show();
+            }
+        });
+    }
+    
+    //회원 탈퇴
+    private void ProfileDelete() {
+        Call<ProfileResponse> call = profileAPI.deletePost(10); //이게 무슨 의미인지 잘 모르겠음. 그러나 작동은 됨.
+        call.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if (!response.equals(200)) {
+                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    ProfileActivity.this.finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+                builder.setTitle("알림")
+                        .setMessage("잠시 후에 다시 시도해주세요.")
+                        .setPositiveButton("확인", null)
+                        .create()
+                        .show();
             }
         });
     }

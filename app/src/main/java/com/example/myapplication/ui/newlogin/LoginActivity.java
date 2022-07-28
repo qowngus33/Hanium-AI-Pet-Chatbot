@@ -18,13 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.JoinActivity;
 import com.example.myapplication.ui.join.RetrofitClient;
-import com.example.myapplication.ui.join.ServiceAPI;
 import com.example.myapplication.ui.pet_select.PetSelectActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -113,7 +111,6 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 LoginResponse();
             }
         });
@@ -125,38 +122,26 @@ public class LoginActivity extends AppCompatActivity {
         //loginRequest에 사용자가 입력한 id와 pw를 저장
         LoginRequest loginRequest = new LoginRequest(userID, userPassword);
 
-        /*retrofit 생성
-        retrofitClient_login = RetrofitClient_login.getInstance();
-        LoginAPI = RetrofitClient_login.getRetrofitInterface();*/
-
-
         //loginRequest에 저장된 데이터와 함께 LoginAPI에서 정의한 getLoginResponse 함수를 실행한 후 응답을 받음
         loginAPI.getLoginResponse(loginRequest).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 //response.body()를 result에 저장
                 LoginResponse result = response.body();
-                Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-
 
                 //받은 코드 저장
                 int statusCode = result.getStatusCode();
 
-                int success = 200; //로그인 성공
-                int errorId = 300; //아이디 일치x
-                int errorPw = 400; //비밀번호 일치x
-
                 if (result.getStatusCode()==200) {
                     String userID = login_email.getText().toString();
 
-                    Toast.makeText(LoginActivity.this, userID + "님 환영합니다.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, userID + "님 환영합니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, PetSelectActivity.class);
                     intent.putExtra("userId", userID);
                     startActivity(intent);
                     LoginActivity.this.finish();
 
                 }  else {
-
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setTitle("알림")
                             .setMessage("아이디 혹은 비밀번호 오류입니다.")

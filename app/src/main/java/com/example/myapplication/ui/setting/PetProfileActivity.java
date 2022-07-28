@@ -11,24 +11,33 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.myapplication.R;
+import com.example.myapplication.ui.join.RetrofitClient;
 import com.example.myapplication.ui.pet_select.PetSelectActivity;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class PetProfileActivity extends SettingActivity {
+    private TextView petNickName, petAge;
+    private Button btnName, btnAge, btnSave, btnDelete;
+
     private Intent intent;
+    private ProfileAPI profileAPI = RetrofitClient.getClient().create(ProfileAPI.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.petprofile);
 
-        TextView ID = findViewById(R.id.userID);
-        TextView petNickName = findViewById(R.id.petNickname);
-        TextView petAge = findViewById(R.id.petAge);
-        Button btnName = findViewById(R.id.btnName);
-        Button btnAge = findViewById(R.id.btnAge);
-        Button btnSave = findViewById(R.id.btnSave);
-        Button btnDelete = findViewById(R.id.btnDelete);
+        petNickName = findViewById(R.id.petNickname);
+        petAge = findViewById(R.id.petAge);
+        btnName = findViewById(R.id.btnName);
+        btnAge = findViewById(R.id.btnAge);
+        btnSave = findViewById(R.id.btnSave);
+        btnDelete = findViewById(R.id.btnDelete);
 
         //반려동물 이름 변경
         btnName.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +115,7 @@ public class PetProfileActivity extends SettingActivity {
             @Override
             public void onClick(View view) {
                 //바뀐 정보 모두 DB로 이동
+                updatePetPost();
             }
         });
 
@@ -113,9 +123,75 @@ public class PetProfileActivity extends SettingActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //정보 삭제 후, 반려동물 등록화면으로 이동
-                Intent intent = new Intent(getApplicationContext(), PetSelectActivity.class);
-                startActivity(intent);
+                AlertDialog.Builder name = new AlertDialog.Builder(PetProfileActivity.this);
+                name.setTitle("반려동물 삭제");
+                name.setMessage("정말로 삭제하시겠습니까?");
+
+                name.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        PetProfileDelete();
+                    }
+                });
+                name.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.dismiss();
+                    }
+                });
+                name.show();
+            }
+        });
+    }
+
+    //반려동물 정보 수정
+    public void updatePetPost(){
+        String Name = petNickName.getText().toString().trim();
+        String Age = petAge.getText().toString().trim();
+        ProfileRequest profileRequest = new ProfileRequest(null, null, Name, Age);
+
+        Call<ProfileResponse> call = profileAPI.updatePetPost(Age, profileRequest);
+
+        call.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if (!response.equals(200)) {
+                    Toast.makeText(getApplicationContext(),"변경되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PetProfileActivity.this);
+                builder.setTitle("알림")
+                        .setMessage("잠시 후에 다시 시도해주세요.")
+                        .setPositiveButton("확인", null)
+                        .create()
+                        .show();
+            }
+        });
+    }
+
+    //반려동물 정보 삭제
+    private void PetProfileDelete() {
+        Call<ProfileResponse> call = profileAPI.deletePetPost(10); //이게 무슨 의미인지 잘 모르겠음. 그러나 작동은 됨.
+        call.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if (!response.equals(200)) {
+                    Intent intent = new Intent(PetProfileActivity.this, PetSelectActivity.class);
+                    startActivity(intent);
+                    PetProfileActivity.this.finish();
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PetProfileActivity.this);
+                builder.setTitle("알림")
+                        .setMessage("잠시 후에 다시 시도해주세요.")
+                        .setPositiveButton("확인", null)
+                        .create()
+                        .show();
             }
         });
     }
