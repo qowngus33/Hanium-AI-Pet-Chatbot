@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.RetrofitClient;
-import com.example.myapplication.ui.newlogin.LoginActivity;
-import com.example.myapplication.ui.newlogin.PasswordChangeActivity;
+import com.example.myapplication.ui.login.LoginActivity;
+import com.example.myapplication.ui.login.PasswordChangeActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

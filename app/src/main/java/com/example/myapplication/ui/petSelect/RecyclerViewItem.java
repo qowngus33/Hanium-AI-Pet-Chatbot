@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.pet_select;
+package com.example.myapplication.ui.petSelect;
 
 public class RecyclerViewItem {
     private String mImgName;

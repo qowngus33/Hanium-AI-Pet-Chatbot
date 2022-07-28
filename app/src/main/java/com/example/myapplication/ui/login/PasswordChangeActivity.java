@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.newlogin;
+package com.example.myapplication.ui.login;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,13 +15,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.join.JoinActivity;
-import com.example.myapplication.ui.join.JoinData;
 import com.example.myapplication.ui.join.JoinEmailCheckActivity;
-import com.example.myapplication.ui.join.JoinResponse;
 import com.example.myapplication.ui.join.JoinUserState;
 import com.example.myapplication.ui.join.RetrofitClient;
-import com.example.myapplication.ui.pet_select.PetSelectActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

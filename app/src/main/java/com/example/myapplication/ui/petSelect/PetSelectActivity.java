@@ -1,28 +1,18 @@
-package com.example.myapplication.ui.pet_select;
+package com.example.myapplication.ui.petSelect;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.newlogin.LoginActivity;
-import com.example.myapplication.ui.mypage.MainActivity;
-import com.example.myapplication.ui.mypage.NewActivity;
-import com.example.myapplication.ui.setting.SettingActivity;
+import com.example.myapplication.ui.mainPage.MainActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
 import android.widget.Toast;
 
 import java.util.ArrayList;

@@ -24,4 +24,9 @@
     <string name="jointextview">회원가입</string>
     <string name="drawer_button">drawer_button</string>
     <string name="setting_button">setting</string>
+    <string name="chatbot">챗봇상담</string>
+    <string name="questionnaire">문진표</string>
+    <string name="hospital">연계병원</string>
+    <string name="diagnosis">예측진단</string>
+    <string name="disease_encyclopedia">질병백과</string>
 </resources>

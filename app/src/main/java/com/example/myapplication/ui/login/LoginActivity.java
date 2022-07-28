@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.newlogin;
+package com.example.myapplication.ui.login;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.JoinActivity;
 import com.example.myapplication.ui.join.RetrofitClient;
-import com.example.myapplication.ui.pet_select.PetSelectActivity;
+import com.example.myapplication.ui.petSelect.PetSelectActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

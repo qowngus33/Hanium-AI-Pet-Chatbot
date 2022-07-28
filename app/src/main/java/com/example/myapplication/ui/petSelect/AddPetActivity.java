@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.pet_select;
+package com.example.myapplication.ui.petSelect;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.mypage.MainActivity;
+import com.example.myapplication.ui.mainPage.MainActivity;
 
 public class AddPetActivity extends AppCompatActivity {
 

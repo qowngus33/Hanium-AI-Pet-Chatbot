@@ -30,7 +30,7 @@
                    android:layout_height="100dp"
                    android:layout_margin="6dp"
                    android:gravity="center"
-                   android:text="챗봇상담" />
+                   android:text="@string/chatbot" />
 
                <Button
                    android:id="@+id/home_button2"
@@ -38,7 +38,7 @@
                    android:layout_height="100dp"
                    android:layout_margin="6dp"
                    android:gravity="center"
-                   android:text="문진표" />
+                   android:text="@string/questionnaire" />
 
                <Button
                    android:id="@+id/home_button3"
@@ -46,7 +46,7 @@
                    android:layout_height="100dp"
                    android:layout_margin="6dp"
                    android:gravity="center"
-                   android:text="예측진단" />
+                   android:text="@string/diagnosis" />
 
                <Button
                    android:id="@+id/home_button4"
@@ -54,7 +54,7 @@
                    android:layout_height="100dp"
                    android:layout_margin="6dp"
                    android:gravity="center"
-                   android:text="연계병원" />
+                   android:text="@string/hospital" />
 
                <Button
                    android:id="@+id/home_button5"
@@ -62,7 +62,7 @@
                    android:layout_height="100dp"
                    android:layout_margin="6dp"
                    android:gravity="center"
-                   android:text="질병백과" />
+                   android:text="@string/disease_encyclopedia" />
            </LinearLayout>
 
            <LinearLayout
@@ -95,13 +95,13 @@
                        android:layout_height="wrap_content"
                        android:layout_gravity="center"
                        android:text="메인 화면"
-                       android:textSize="24dp" />
+                       android:textSize="24sp" />
 
                    <ImageButton
                        android:id="@+id/setting_btn"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:layout_gravity="right"
+                       android:layout_gravity="end"
                        android:background="#EEEEEE"
                        android:contentDescription="@string/setting_button"
                        android:minWidth="48dp"
@@ -122,7 +122,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_gravity="left">
+        android:layout_gravity="start">
 
         <Button
             android:id="@+id/drawer_button_login"
@@ -140,26 +140,33 @@
             android:id="@+id/drawer_button_chatbot"
             android:layout_width="150dp"
             android:layout_height="75dp"
-            android:text="챗봇 상담"
+            android:text="@string/chatbot"
             />
         <Button
             android:id="@+id/drawer_button_question"
             android:layout_width="150dp"
             android:layout_height="75dp"
-            android:text="문진표"
+            android:text="@string/questionnaire"
             />
         <Button
             android:id="@+id/drawer_button_diagnose"
             android:layout_width="150dp"
             android:layout_height="75dp"
-            android:text="에측 진단"
+            android:text="@string/diagnosis"
             />
         <Button
             android:id="@+id/drawer_button_hospital"
             android:layout_width="150dp"
             android:layout_height="75dp"
-            android:text="연계병원"
+            android:text="@string/hospital"
             />
+        <Button
+            android:id="@+id/drawer_button_encyclopedia"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_margin="6dp"
+            android:gravity="center"
+            android:text="@string/disease_encyclopedia" />
 
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

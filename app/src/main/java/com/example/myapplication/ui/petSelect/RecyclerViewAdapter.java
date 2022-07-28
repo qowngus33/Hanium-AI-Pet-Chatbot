@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.pet_select;
+package com.example.myapplication.ui.petSelect;
 
 import android.content.Context;
 import android.view.LayoutInflater;

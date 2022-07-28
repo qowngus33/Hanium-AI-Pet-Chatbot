@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.RetrofitClient;
-import com.example.myapplication.ui.pet_select.PetSelectActivity;
+import com.example.myapplication.ui.petSelect.PetSelectActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
