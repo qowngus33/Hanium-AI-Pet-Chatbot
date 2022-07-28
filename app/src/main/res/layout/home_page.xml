@@ -119,7 +119,7 @@
     <LinearLayout
         android:id="@+id/drawer_menu"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_gravity="left">
