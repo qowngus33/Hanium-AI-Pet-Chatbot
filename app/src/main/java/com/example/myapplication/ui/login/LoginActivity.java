@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.JoinActivity;
+import com.example.myapplication.ui.join.PasswordChangeActivity;
 import com.example.myapplication.ui.join.RetrofitClient;
 import com.example.myapplication.ui.petSelect.PetSelectActivity;
 

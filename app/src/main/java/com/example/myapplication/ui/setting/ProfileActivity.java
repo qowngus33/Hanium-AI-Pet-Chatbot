@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.RetrofitClient;
 import com.example.myapplication.ui.login.LoginActivity;
-import com.example.myapplication.ui.login.PasswordChangeActivity;
+import com.example.myapplication.ui.join.PasswordChangeActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

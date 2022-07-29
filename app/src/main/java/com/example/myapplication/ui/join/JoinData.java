@@ -9,8 +9,16 @@ public class JoinData {
     @SerializedName("memberPassword")
     private String userPwd;
 
-    public JoinData(String userEmail, String userPwd) {
+    @SerializedName("sendCode")
+    private int sendCode;
+
+    @SerializedName("receivedCode")
+    private int receivedCode;
+
+    public JoinData(String userEmail, String userPwd, int sendCode, int receivedCode) {
         this.userEmail = userEmail;
+        this.sendCode = sendCode;
         this.userPwd = userPwd;
+        this.receivedCode = receivedCode;
     }
 }

@@ -1,18 +1,24 @@
 package com.example.myapplication.ui.join;
 
-import javax.xml.transform.Result;
+import com.example.myapplication.ui.login.LoginRequest;
 
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.Call;
 
 public interface ServiceAPI {
-    @POST("/join")
+    @POST("/enterEmailCode/join")
     Call<JoinResponse> userJoin(@Body JoinData data);
+
+    @POST("/sendEmail")
+    Call<JoinResponse> sendEmail(@Body EmailValidationData data);
 
     @POST("/validateDuplicateEmail")
     Call<JoinResponse> emailValidation(@Body EmailValidationData data);
+
+    @POST("/changePw")
+    Call<JoinResponse> changePw(@Body LoginRequest data);
+
+    @POST("/enterEmailCode/changePw")
+    Call<JoinResponse> enterEmailCode(@Body EmailCodeData data);
 }

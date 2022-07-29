@@ -55,7 +55,7 @@
         </TableRow>
         <TableRow>
             <TextView
-                android:text="이름:"
+                android:text="이름"
                 android:textSize="20dp"
                 android:layout_column="0"
                 android:layout_gravity="center"/>
@@ -74,7 +74,7 @@
         </TableRow>
         <TableRow android:layout_marginTop="5dp">
             <TextView
-                android:text="나이:"
+                android:text="나이"
                 android:textSize="20dp"
                 android:layout_column="0"
                 android:layout_gravity="center"/>
@@ -93,7 +93,7 @@
         </TableRow>
         <TableRow android:layout_marginTop="5dp">
             <TextView
-                android:text="성별:"
+                android:text="성별"
                 android:textSize="20dp"
                 android:layout_column="0"
                 android:layout_gravity="center"/>
@@ -128,7 +128,7 @@
         </TableRow>
         <TableRow android:layout_marginTop="5dp">
             <TextView
-                android:text="중성화:"
+                android:text="중성화"
                 android:textSize="20dp"
                 android:layout_column="0"
                 android:layout_gravity="center"/>

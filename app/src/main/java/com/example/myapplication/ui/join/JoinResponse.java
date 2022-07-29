@@ -10,7 +10,7 @@ public class JoinResponse {
     private String message;
 
     @SerializedName("data")
-    private String data;
+    private int data;
 
     public int getCode() {
         return code;
@@ -20,7 +20,7 @@ public class JoinResponse {
         return message;
     }
 
-    public String getData() {
+    public int getData() {
         return data;
     }
 }

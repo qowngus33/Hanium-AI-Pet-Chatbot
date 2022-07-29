@@ -28,8 +28,10 @@ public class PetSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pet_activity_main);
 
-        firstInit();
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mList = new ArrayList<>();
 
+        // 리사이클러뷰에 데이터추가 (함수가 밑에 구현되어있음)
         addItem("cat", "밤이", "멍멍이");
         addItem("dog", "보리", "냐옹이");
         addItem("dog", "멍이", "냐옹이");
@@ -40,6 +42,8 @@ public class PetSelectActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
+        // 리사이클러뷰 안의 아이템(반려동물 아이콘) 클릭시 메인화면으로 이동
         mRecyclerViewAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
@@ -49,12 +53,15 @@ public class PetSelectActivity extends AppCompatActivity {
             }
         });
 
+        // 내가 구현한건 아닌데 필요할까봐 남겨놓음!
         mRecyclerViewAdapter.setOnLongItemClickListener(new RecyclerViewAdapter.OnLongItemClickListener() {
             @Override
             public void onLongItemClick(int pos) {
                 Toast.makeText(getApplicationContext(), "onLongItemClick position : " + pos, Toast.LENGTH_SHORT).show();
             }
         });
+
+        // 반려동물 추가 버튼 클릭
         Button addButton = (Button) findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -65,18 +72,12 @@ public class PetSelectActivity extends AppCompatActivity {
         });
     }
 
-    public void firstInit(){
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mList = new ArrayList<>();
-    }
-
+    // 리사이클러뷰에 데이터추가
     public void addItem(String imgName, String mainText, String subText){
         RecyclerViewItem item = new RecyclerViewItem();
-
         item.setImgName(imgName);
         item.setMainText(mainText);
         item.setSubText(subText);
-
         mList.add(item);
     }
 }
