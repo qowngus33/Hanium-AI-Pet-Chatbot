@@ -2,6 +2,7 @@ package com.example.myapplication.ui.join;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -30,6 +31,7 @@ public class JoinActivity extends AppCompatActivity {
     private boolean validate = false;
     private ServiceAPI service = RetrofitClient.getClient().create(ServiceAPI.class);
     private Dialog enterCodeDialog;
+    private AlertDialog dialog;
     private int codeEntered;
     private int codeReceived;
 
@@ -122,8 +124,18 @@ public class JoinActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<JoinResponse> call, Response<JoinResponse> response) {
                 JoinResponse result = response.body();
-                Toast.makeText(JoinActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(JoinActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                 if (result.getCode() == 200) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(JoinActivity.this);
+                    dialog = builder.setMessage("사용할 수 있는 이메일입니다.")
+                            .setCancelable(false)
+                            .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .create();
+                    dialog.show();
                     validate = true;
                 }
             }

@@ -34,7 +34,6 @@ public class PasswordChangeActivity extends AppCompatActivity {
     private int codeEntered;
     private int codeReceived;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,17 +177,6 @@ public class PasswordChangeActivity extends AppCompatActivity {
                 Toast.makeText(PasswordChangeActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                 if (result.getCode() == 200) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(PasswordChangeActivity.this);
-                    dialog = builder.setMessage("비밀번호가 재설정되었습니다.")
-                            .setCancelable(false)
-                            .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                    startActivity(intent);
-                                }
-                            })
-                            .create();
-                    dialog.show();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                 }

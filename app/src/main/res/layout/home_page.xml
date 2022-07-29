@@ -162,10 +162,8 @@
             />
         <Button
             android:id="@+id/drawer_button_encyclopedia"
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:layout_margin="6dp"
-            android:gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
             android:text="@string/disease_encyclopedia" />
 
     </LinearLayout>
