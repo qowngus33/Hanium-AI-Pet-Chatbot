@@ -1,7 +1,5 @@
 package com.example.myapplication.ui.login;
 
-import com.example.myapplication.ui.join.JoinUserState;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

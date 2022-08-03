@@ -16,7 +16,7 @@ public interface ServiceAPI {
     @POST("/validateDuplicateEmail")
     Call<JoinResponse> emailValidation(@Body EmailValidationData data);
 
-    @POST("/changePw")
+    @POST("/changePw") //정보 수정.. put으로 가능함!
     Call<JoinResponse> changePw(@Body LoginRequest data);
 
     @POST("/enterEmailCode/changePw")

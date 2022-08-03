@@ -15,67 +15,50 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.mainPage.MainActivity;
+import com.example.myapplication.ui.join.RetrofitClient;
+import com.example.myapplication.ui.setting.PetinfoData;
+import com.example.myapplication.ui.setting.ProfileAPI;
+import com.example.myapplication.ui.setting.ProfileResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddPetActivity extends AppCompatActivity {
+    private ImageView petprofile;
+    private TextView petAge;
+    private EditText petBreed,petNickName;
+    private Button btnAge, btnSave, btnCancel, selectCatButton, selectDogButton;
+
+    private ProfileAPI profileAPI = RetrofitClient.getClient().create(ProfileAPI.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newpetprofile);
 
-        // 이름, 나이 입력 창
-        Button saveButton = (Button) findViewById(R.id.btnAddPetSave);
-        Button cancelButton = (Button) findViewById(R.id.btnAddPetCancel);
-        Button selectCatButton = (Button) findViewById(R.id.selectCat);
-        Button selectDogButton = (Button) findViewById(R.id.selectDog);
-        ImageView petprofile = (ImageView) findViewById(R.id.pic);
+        petprofile = findViewById(R.id.pic);
+        btnAge = findViewById(R.id.btnAge);
+        btnSave = findViewById(R.id.btnAddPetSave);
+        btnCancel = findViewById(R.id.btnAddPetCancel);
+        selectCatButton = findViewById(R.id.selectCat);
+        selectDogButton = findViewById(R.id.selectDog);
 
-        Button btnName = findViewById(R.id.btnName);
-        Button btnAge = findViewById(R.id.btnAge);
-        TextView petNickName = findViewById(R.id.petNickname);
-        TextView petAge = findViewById(R.id.petAge);
+        petBreed = findViewById(R.id.petbreed);
+        petNickName = findViewById(R.id.petNickname);
+        petAge = findViewById(R.id.petAge);
 
-        saveButton.setOnClickListener(new View.OnClickListener(){
+        btnSave.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                getPetinfo();
             }
         });
-        cancelButton.setOnClickListener(new View.OnClickListener(){
+        btnCancel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), PetSelectActivity.class);
                 startActivity(intent);
-            }
-        });
-        //반려동물 이름 변경
-        btnName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder name = new AlertDialog.Builder(AddPetActivity.this);
-                name.setTitle("닉네임 설정");
-                name.setMessage("10자 이내로 닉네임을 설정하세요.");
-
-                final EditText NickName = new EditText(AddPetActivity.this);
-                name.setView(NickName);
-                name.setPositiveButton("저장", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        String result = NickName.getText().toString();
-                        petNickName.setText(result);
-                        dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "닉네임이 변경되었습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                name.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        dialog.dismiss();
-                    }
-                });
-                name.show();
             }
         });
 
@@ -127,6 +110,37 @@ public class AddPetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 petprofile.setImageResource(R.drawable.dog);
+            }
+        });
+    }
+    //반려동물 정보 변경
+    public void getPetinfo(){
+        String Name = petNickName.getText().toString().trim();
+        String Age = petAge.getText().toString().trim();
+        //String Breed = petBreed.getText().toString().trim();
+        PetinfoData petinfoData = new PetinfoData(Name, Age, null, 1, 1);
+
+        Call<ProfileResponse> call = profileAPI.getPetinfo(petinfoData);
+
+        call.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if (!response.equals(200)) {
+                    Toast.makeText(getApplicationContext(),"변경되었습니다.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddPetActivity.this, PetSelectActivity.class);
+                    startActivity(intent);
+                    AddPetActivity.this.finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddPetActivity.this);
+                builder.setTitle("알림")
+                        .setMessage("잠시 후에 다시 시도해주세요.")
+                        .setPositiveButton("확인", null)
+                        .create()
+                        .show();
             }
         });
     }

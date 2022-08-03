@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,8 +20,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PetProfileActivity extends SettingActivity {
-    private TextView petNickName, petAge;
-    private Button btnName, btnAge, btnSave, btnDelete;
+    private TextView petAge;
+    private EditText petBreed,petNickName;
+    private Button btnAge, btnSave, btnDelete;
 
     private Intent intent;
     private ProfileAPI profileAPI = RetrofitClient.getClient().create(ProfileAPI.class);
@@ -34,43 +34,17 @@ public class PetProfileActivity extends SettingActivity {
 
         petNickName = findViewById(R.id.petNickname);
         petAge = findViewById(R.id.petAge);
-        btnName = findViewById(R.id.btnName);
+        petBreed = findViewById(R.id.petbreed);
         btnAge = findViewById(R.id.btnAge);
         btnSave = findViewById(R.id.btnSave);
         btnDelete = findViewById(R.id.btnDelete);
+        
+        //사용자가 초기 설정한 축종에 따라 사진 보여주기
 
-        //반려동물 이름 변경
-        btnName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder name = new AlertDialog.Builder(PetProfileActivity.this);
-                name.setTitle("이름 설정");
-                name.setMessage("10자 이내로 이름을 설정하세요.");
+        //품종 사용자가 작성한 내용, DB 연결해 보여주기
+        getNameBreedAge();
+        //반려동물 이름, 사용자가 작성한 내용 보여주기
 
-                final EditText NickName = new EditText(PetProfileActivity.this);
-                name.setView(NickName);
-                name.setPositiveButton("저장", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        Editable result = NickName.getText();
-                        if (result.length()<10) {
-                            petNickName.setText(result.toString());
-                            dialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "이름이 변경되었습니다.", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "10자 이내로 입력하세요.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-                name.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        dialog.dismiss();
-                    }
-                });
-                name.show();
-            }
-        });
 
         //나이 변경
         btnAge.setOnClickListener(new View.OnClickListener() {
@@ -144,13 +118,14 @@ public class PetProfileActivity extends SettingActivity {
         });
     }
 
-    //반려동물 정보 수정
+    //반려동물 정보 변경
     public void updatePetPost(){
         String Name = petNickName.getText().toString().trim();
         String Age = petAge.getText().toString().trim();
-        ProfileRequest profileRequest = new ProfileRequest(null, null, Name, Age);
+        //String Breed = petBreed.getText().toString().trim();
+        PetinfoData petinfoData = new PetinfoData(Name, Age, null, 1, 1);
 
-        Call<ProfileResponse> call = profileAPI.updatePetPost(Age, profileRequest);
+        Call<ProfileResponse> call = profileAPI.updatePetPost(Age, petinfoData);
 
         call.enqueue(new Callback<ProfileResponse>() {
             @Override
@@ -195,4 +170,35 @@ public class PetProfileActivity extends SettingActivity {
             }
         });
     }
+    public void getNameBreedAge(){
+        String Name = petNickName.getText().toString().trim();
+        String Age = petAge.getText().toString().trim();
+        //String Breed = petBreed.getText().toString().trim();
+        PetinfoData petinfoData = new PetinfoData(Name, Age, null, 1, 1);
+        Call<ProfileResponse> call = profileAPI.getNameBreedAge(Name, petinfoData);
+
+        call.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if (!response.equals(200)) {
+                    //정보 받아오는 것에서 오류 발생
+                    /*petNickName.setText(response.body().getPetName());
+                    petBreed.setText(response.body().getPetBreed());
+                    petAge.setText(response.body().getPetAge());*/
+                    Toast.makeText(getApplicationContext(),"설정되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PetProfileActivity.this);
+                builder.setTitle("알림")
+                        .setMessage("잠시 후에 다시 시도해주세요.")
+                        .setPositiveButton("확인", null)
+                        .create()
+                        .show();
+            }
+        });
+    }
+
 }

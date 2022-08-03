@@ -12,6 +12,24 @@ public class ProfileResponse {
     @SerializedName("data")
     private String data;
 
+    //반려동물 기본 정보
+    @SerializedName("petName")
+    private String petName;
+    @SerializedName("petBreed")
+    private String petBreed;
+    @SerializedName("petAge")
+    private String petAge;
+
+    public String getPetName() {
+        return petName;
+    }
+    public String getPetBreed() {
+        return petBreed;
+    }
+    public String getPetAge() {
+        return petAge;
+    }
+
     public int getCode() {
         return code;
     }
