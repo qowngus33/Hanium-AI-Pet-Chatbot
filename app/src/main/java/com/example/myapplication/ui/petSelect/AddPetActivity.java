@@ -28,7 +28,8 @@ public class AddPetActivity extends AppCompatActivity {
     private ImageView petprofile;
     private TextView petAge;
     private EditText petBreed,petNickName;
-    private Button btnAge, btnSave, btnCancel, selectCatButton, selectDogButton;
+    private Button man, woman, NeuteringYes, NeuteringNo, btnAge, btnSave, btnCancel, selectCatButton, selectDogButton;
+
 
     private ProfileAPI profileAPI = RetrofitClient.getClient().create(ProfileAPI.class);
 
@@ -43,10 +44,15 @@ public class AddPetActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnAddPetCancel);
         selectCatButton = findViewById(R.id.selectCat);
         selectDogButton = findViewById(R.id.selectDog);
+        man = findViewById(R.id.man);
+        woman = findViewById(R.id.woman);
+        NeuteringYes = findViewById(R.id.Neuteringyes);
+        NeuteringNo = findViewById(R.id.Neuteringno);
 
         petBreed = findViewById(R.id.petbreed);
         petNickName = findViewById(R.id.petNickname);
         petAge = findViewById(R.id.petAge);
+        
 
         btnSave.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -118,7 +124,21 @@ public class AddPetActivity extends AppCompatActivity {
         String Name = petNickName.getText().toString().trim();
         String Age = petAge.getText().toString().trim();
         //String Breed = petBreed.getText().toString().trim();
-        PetinfoData petinfoData = new PetinfoData(Name, Age, null, 1, 1);
+        String Gender = null;
+        String Neutering = null;
+        if (man.isEnabled()) {
+            Gender = man.getText().toString();
+        } else if (woman.isEnabled()) {
+            Gender = woman.getText().toString();
+        }
+
+        if (NeuteringYes.isEnabled()) {
+            Neutering = NeuteringYes.getText().toString();
+        } else if (NeuteringNo.isEnabled()) {
+            Neutering = NeuteringNo.getText().toString();
+        }
+
+        PetinfoData petinfoData = new PetinfoData(Name, Age, null, Gender, Neutering);
 
         Call<ProfileResponse> call = profileAPI.getPetinfo(petinfoData);
 

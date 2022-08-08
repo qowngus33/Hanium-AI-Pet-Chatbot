@@ -10,16 +10,9 @@ import retrofit2.http.Path;
 public interface ProfileAPI {
     //@통신 방식("통신 API명")
 
-    //반려동물 정보 등록
+    //반려동물 정보 등록, 초기 셋팅값
     @POST("/PetSelect")
     Call<ProfileResponse> getPetinfo(@Body PetinfoData petinfoData);
-
-    //반려동물 초기 셋팅
-    @POST("/PetProfile/{petName}")
-    Call<ProfileResponse> getNameBreedAge(
-            @Path("petName") String petName,
-            @Body PetinfoData petinfoData
-    );
 
     //회원 탈퇴
     @DELETE("/Profile/{memberEmail}")
