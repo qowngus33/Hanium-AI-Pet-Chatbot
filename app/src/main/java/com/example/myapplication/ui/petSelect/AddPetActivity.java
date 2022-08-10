@@ -109,13 +109,13 @@ public class AddPetActivity extends AppCompatActivity {
         selectCatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                petprofile.setImageResource(R.drawable.cat);
+                petprofile.setImageResource(R.drawable.catface);
             }
         });
         selectDogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                petprofile.setImageResource(R.drawable.dog);
+                petprofile.setImageResource(R.drawable.dogface);
             }
         });
     }
@@ -146,7 +146,7 @@ public class AddPetActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
                 if (!response.equals(200)) {
-                    Toast.makeText(getApplicationContext(),"변경되었습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"등록되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AddPetActivity.this, PetSelectActivity.class);
                     startActivity(intent);
                     AddPetActivity.this.finish();

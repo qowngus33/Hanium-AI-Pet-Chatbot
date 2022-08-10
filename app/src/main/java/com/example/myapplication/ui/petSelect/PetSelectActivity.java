@@ -4,16 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.myapplication.R;
-import com.example.myapplication.ui.mainPage.MainActivity;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.widget.Toast;
+import com.example.myapplication.R;
+import com.example.myapplication.ui.mainPage.MainActivity;
 
 import java.util.ArrayList;
 
@@ -50,14 +48,6 @@ public class PetSelectActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "안녕!" + mList.get(pos).getMainText(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // 내가 구현한건 아닌데 필요할까봐 남겨놓음!
-        mRecyclerViewAdapter.setOnLongItemClickListener(new RecyclerViewAdapter.OnLongItemClickListener() {
-            @Override
-            public void onLongItemClick(int pos) {
-                Toast.makeText(getApplicationContext(), "onLongItemClick position : " + pos, Toast.LENGTH_SHORT).show();
             }
         });
 

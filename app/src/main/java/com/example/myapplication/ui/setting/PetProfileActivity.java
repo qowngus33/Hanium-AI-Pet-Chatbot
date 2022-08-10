@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.RetrofitClient;
@@ -20,6 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PetProfileActivity extends SettingActivity {
+    private ToggleButton Gendertoggle;
     private TextView petAge;
     private EditText petBreed,petNickName;
     private Button man, woman, NeuteringYes, NeuteringNo, btnAge, btnSave, btnDelete;
@@ -29,6 +31,8 @@ public class PetProfileActivity extends SettingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.petprofile);
+
+        //Gendertoggle = findViewById(R.id.Gendertoggle);
 
         petNickName = findViewById(R.id.petNickname);
         petAge = findViewById(R.id.petAge);
@@ -190,7 +194,7 @@ public class PetProfileActivity extends SettingActivity {
         String Name = petNickName.getText().toString().trim();
         String Age = petAge.getText().toString().trim();
         //String Breed = petBreed.getText().toString().trim();
-        //String Gender = "";
+        //String Gender = null;
         //String Neutering = "";
         PetinfoData petinfoData = new PetinfoData(Name, Age, null, null, null);
         Call<ProfileResponse> call = profileAPI.getPetinfo(petinfoData);
@@ -203,9 +207,10 @@ public class PetProfileActivity extends SettingActivity {
                     petNickName.setText(response.body().getPetName());
                     //petBreed.setText(response.body().getPetBreed());
                     petAge.setText(response.body().getPetAge());
+                    //Gendertoggle;
                     /*if ((response.body().getPetGender()).equals("남")) {
-                        man.isActivated();
-                    } else {woman.isActivated();}*/
+
+                    }*/
                     Toast.makeText(getApplicationContext(),"설정되었습니다.", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:background="@drawable/background_default">
 
     <ImageView
         android:id="@+id/pic"
@@ -13,21 +12,26 @@
         android:layout_height="155dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:src="@drawable/cat" />
+        android:src="@drawable/catface" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
         <TextView
             android:id="@+id/pet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="나의 반려동물은?"
             android:textSize="20dp"
+            android:textColor="@color/darkbrown"
             android:layout_centerVertical="true"
             android:layout_marginLeft="17dp"/>
         <Button
+            android:textColor="@color/darkbrown"
+
             android:id="@+id/selectDog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,9 +39,10 @@
             android:text="개"
             android:textSize="18dp"
             android:layout_marginLeft="25dp"
-            android:textColor="#9A000000"
             style="?attr/materialButtonOutlinedStyle"/>
         <Button
+            android:textColor="@color/darkbrown"
+
             android:id="@+id/selectCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +50,6 @@
             android:textSize="18dp"
             android:layout_toRightOf="@+id/selectDog"
             android:layout_marginLeft="22dp"
-            android:textColor="#9A000000"
             style="?attr/materialButtonOutlinedStyle"/>
     </RelativeLayout>
 
@@ -53,16 +57,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:stretchColumns="*">
         <TableRow>
             <TextView
                 android:text="품종"
                 android:textSize="20dp"
+                android:textColor="@color/darkbrown"
                 android:layout_gravity="center"/>
             <EditText
                 android:id="@+id/petbreed"
                 android:hint="무슨 종인지 적어주세요."
                 android:textSize="17dp"
+                android:textColor="@color/darkbrown"
                 android:layout_weight="1"
                 android:layout_gravity="center"/>
         </TableRow>
@@ -70,12 +79,14 @@
             <TextView
                 android:text="이름"
                 android:textSize="20dp"
+                android:textColor="@color/darkbrown"
                 android:layout_column="0"
                 android:layout_gravity="center"/>
             <EditText
                 android:id="@+id/petNickname"
                 android:hint="이름(별명)을 적어주세요."
                 android:textSize="17dp"
+                android:textColor="@color/darkbrown"
                 android:layout_weight="1"
                 android:layout_gravity="center"/>
         </TableRow>
@@ -83,15 +94,20 @@
             <TextView
                 android:text="나이"
                 android:textSize="20dp"
+                android:textColor="@color/darkbrown"
                 android:layout_gravity="center"/>
             <TextView
                 android:hint="x"
                 android:textSize="20dp"
+                android:textColor="@color/darkbrown"
                 android:id="@+id/petAge"
                 android:layout_column="1"
                 android:layout_weight="1"
                 android:layout_gravity="center"/>
             <Button
+                android:backgroundTint="@color/lightPink1"
+                android:textColor="@color/darkbrown"
+
                 android:text="입력"
                 android:textSize="20dp"
                 android:id="@+id/btnAge"
@@ -103,6 +119,7 @@
             <TextView
                 android:text="성별"
                 android:textSize="20dp"
+                android:textColor="@color/darkbrown"
                 android:layout_column="0"
                 android:layout_gravity="center"/>
             <com.google.android.material.button.MaterialButtonToggleGroup
@@ -118,6 +135,9 @@
                 android:layout_weight="1">
 
                 <Button
+                    android:backgroundTint="@color/lightPink2"
+                    android:textColor="@color/darkbrown"
+
                     android:id="@+id/man"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -127,6 +147,9 @@
                     style="?attr/materialButtonOutlinedStyle"
                     />
                 <Button
+                    android:backgroundTint="@color/lightPink2"
+                    android:textColor="@color/darkbrown"
+
                     android:id="@+id/woman"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -141,6 +164,7 @@
             <TextView
                 android:text="중성화"
                 android:textSize="20dp"
+                android:textColor="@color/darkbrown"
                 android:layout_column="0"
                 android:layout_gravity="center"/>
 
@@ -157,6 +181,9 @@
                 android:layout_weight="1">
 
                 <Button
+                    android:backgroundTint="@color/lightPink2"
+                    android:textColor="@color/darkbrown"
+
                     android:id="@+id/Neuteringyes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -166,6 +193,9 @@
                     style="?attr/materialButtonOutlinedStyle"
                     />
                 <Button
+                    android:backgroundTint="@color/lightPink2"
+                    android:textColor="@color/darkbrown"
+
                     android:id="@+id/Neuteringno"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -180,10 +210,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
         <TableRow>
             <Button
+                android:backgroundTint="@color/lightPink1"
+                android:textColor="@color/darkbrown"
+
                 android:text="저장"
                 android:textSize="20dp"
                 android:id="@+id/btnAddPetSave"
@@ -193,6 +226,9 @@
                 android:layout_marginRight="35dp"/>
 
             <Button
+                android:backgroundTint="@color/lightPink1"
+                android:textColor="@color/darkbrown"
+
                 android:text="취소"
                 android:textSize="20dp"
                 android:id="@+id/btnAddPetCancel"

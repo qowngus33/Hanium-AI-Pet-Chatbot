@@ -80,9 +80,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         RecyclerViewItem item = mList.get(position);
 
         if(item.getImgName()=="cat") // 아이템의 이미지 이름이 cat이면 고양이 사진으로 설정
-            holder.imgView_item.setImageResource(R.drawable.cat);
+            holder.imgView_item.setImageResource(R.drawable.catface);
         else
-            holder.imgView_item.setImageResource(R.drawable.dog);
+            holder.imgView_item.setImageResource(R.drawable.dogface);
 
         holder.txt_main.setText(item.getMainText());
         holder.txt_sub.setText(item.getSubText());
