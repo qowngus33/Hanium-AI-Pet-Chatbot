@@ -133,7 +133,7 @@
 
     <!-- Drawer -->
     <LinearLayout
-        android:id="@+id/drawer_menu"
+        android:id="@+id/drawer_mednu"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:orientation="vertical"

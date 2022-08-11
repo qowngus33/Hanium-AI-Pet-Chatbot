@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.setting;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.join.RetrofitClient;
@@ -21,18 +21,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PetProfileActivity extends SettingActivity {
-    private ToggleButton Gendertoggle;
     private TextView petAge;
     private EditText petBreed,petNickName;
     private Button man, woman, NeuteringYes, NeuteringNo, btnAge, btnSave, btnDelete;
     private ProfileAPI profileAPI = RetrofitClient.getClient().create(ProfileAPI.class);
+    public void MaterialButtonToggleGroup (Context context) {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.petprofile);
-
-        //Gendertoggle = findViewById(R.id.Gendertoggle);
 
         petNickName = findViewById(R.id.petNickname);
         petAge = findViewById(R.id.petAge);
@@ -207,7 +207,6 @@ public class PetProfileActivity extends SettingActivity {
                     petNickName.setText(response.body().getPetName());
                     //petBreed.setText(response.body().getPetBreed());
                     petAge.setText(response.body().getPetAge());
-                    //Gendertoggle;
                     /*if ((response.body().getPetGender()).equals("남")) {
 
                     }*/
@@ -225,6 +224,8 @@ public class PetProfileActivity extends SettingActivity {
                         .show();
             }
         });
+
+
     }
 
 }
