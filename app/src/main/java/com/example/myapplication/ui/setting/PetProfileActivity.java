@@ -204,7 +204,7 @@ public class PetProfileActivity extends SettingActivity {
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
                 if (!response.equals(200)) {
                     //정보 받아오는 것에서 오류 발생
-                    petNickName.setText(response.body().getPetName());
+                    petNickName.setHint(response.body().getPetName());
                     //petBreed.setText(response.body().getPetBreed());
                     petAge.setText(response.body().getPetAge());
                     /*if ((response.body().getPetGender()).equals("남")) {

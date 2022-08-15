@@ -30,8 +30,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginAPI loginAPI = RetrofitClient.getClient().create(LoginAPI.class);
 
+    private TextView pw_change;
     private EditText login_email, login_password;
-    private Button login_button, join_button, pw_change;
+    private Button login_button, join_button;
     private LoginFormState LoginFormState = new LoginFormState();
 
     @Override

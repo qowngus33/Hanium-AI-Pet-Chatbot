@@ -47,7 +47,7 @@ android:layout_height="match_parent">
                     android:layout_gravity="center"
                     android:text="챗봇 상담"
                     android:textSize="24sp"
-                    android:textColor="@color/darkbrown"/>
+                    android:textColor="@color/white"/>
 
                 <ImageButton
                     android:id="@+id/setting_btn"
@@ -105,7 +105,7 @@ android:layout_height="match_parent">
         android:text="펫 선택"
         />
     <Button
-        android:backgroundTint="@color/lightPink1"
+        android:backgroundTint="@color/white"
         android:textColor="@color/darkbrown"
         android:id="@+id/drawer_button_chatbot"
         android:layout_width="150dp"
@@ -113,7 +113,7 @@ android:layout_height="match_parent">
         android:text="@string/chatbot"
         />
     <Button
-        android:backgroundTint="@color/lightPink1"
+        android:backgroundTint="@color/white"
         android:textColor="@color/darkbrown"
         android:id="@+id/drawer_button_question"
         android:layout_width="150dp"
@@ -121,7 +121,7 @@ android:layout_height="match_parent">
         android:text="@string/questionnaire"
         />
     <Button
-        android:backgroundTint="@color/lightPink1"
+        android:backgroundTint="@color/white"
         android:textColor="@color/darkbrown"
         android:id="@+id/drawer_button_diagnose"
         android:layout_width="150dp"
@@ -129,7 +129,7 @@ android:layout_height="match_parent">
         android:text="@string/diagnosis"
         />
     <Button
-        android:backgroundTint="@color/lightPink1"
+        android:backgroundTint="@color/white"
         android:textColor="@color/darkbrown"
         android:id="@+id/drawer_button_hospital"
         android:layout_width="150dp"
@@ -137,7 +137,7 @@ android:layout_height="match_parent">
         android:text="@string/hospital"
         />
     <Button
-        android:backgroundTint="@color/lightPink1"
+        android:backgroundTint="@color/white"
         android:textColor="@color/darkbrown"
         android:id="@+id/drawer_button_encyclopedia"
         android:layout_width="150dp"

@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_default">
+        android:background="@drawable/background_detail">
 
         <TextView
             android:id="@+id/signup"
@@ -23,7 +23,7 @@
             android:text="회원가입"
             android:textSize="30dp"
             android:textStyle="bold"
-            android:textColor="@color/darkbrown"/>
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/emailText"
@@ -37,7 +37,7 @@
             android:gravity="left"
             android:text="이메일"
             android:textSize="15dp"
-            android:textColor="@color/darkbrown"/>
+            android:textColor="@color/white"/>
 
         <LinearLayout
             android:id="@+id/emailLinear"
@@ -57,11 +57,14 @@
                 android:ems="10"
                 android:hint="이메일을 입력하세요"
                 android:inputType="textEmailAddress"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:backgroundTint="@color/white"/>
 
             <Button
-                android:backgroundTint="@color/lightPink1"
-                android:textColor="@color/darkbrown"
+                android:backgroundTint="#CCFFFFFF"
+                android:textColor="@color/purple"
 
                 android:id="@+id/emailCheckButton"
                 android:layout_width="wrap_content"
@@ -86,7 +89,7 @@
             android:gravity="left"
             android:text="비밀번호"
             android:textSize="15dp"
-            android:textColor="@color/darkbrown"/>
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -99,7 +102,10 @@
             android:ems="10"
             android:hint="비밀번호를 입력하세요"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"/>
 
         <TextView
             android:id="@+id/passwordCheckText"
@@ -113,7 +119,7 @@
             android:gravity="left"
             android:text="비밀번호 재확인"
             android:textSize="15dp"
-            android:textColor="@color/darkbrown"/>
+            android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/editTextPasswordCheck"
@@ -126,11 +132,14 @@
             android:ems="10"
             android:hint="비밀번호를 다시 한 번 입력하세요"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"/>
 
         <Button
-            android:backgroundTint="@color/lightPink1"
-            android:textColor="@color/darkbrown"
+            android:backgroundTint="#CCFFFFFF"
+            android:textColor="@color/purple"
 
             android:id="@+id/joinButton"
             android:layout_width="match_parent"
